@@ -27,4 +27,11 @@ class TaskModel extends Database
             return [];
         }
     }
+
+    public function fetchById($id)
+    {
+        $stm = $this->pdo->prepare("SELECT * FROM tasks WHERE id = ?");
+        $stm->execute([$id]);
+        return $stm->fetch(PDO::FETCH_ASSOC);
+    }
 }

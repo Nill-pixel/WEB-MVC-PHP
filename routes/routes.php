@@ -7,5 +7,6 @@ $routes = [
     '/signIn' => 'HomeController@signIn',
     '/signUp' => 'HomeController@signUp',
     '/add' => 'HomeController@add',
-    '/addTask' => 'TaskController@create'
+    '/addTask' => 'TaskController@create',
+    '/tasks/{id}' => 'TaskController@show',
 ];

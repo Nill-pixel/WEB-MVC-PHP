@@ -42,7 +42,7 @@ require_once('layout.php')
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 <?php foreach ($tasks as $task): ?>
                     <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
-                        href="#">
+                        href="/app/tasks/<?php echo $task['id'] ?>">
                         <div class="p-4 md:p-5">
                             <div class="flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

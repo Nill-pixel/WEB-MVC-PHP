@@ -24,4 +24,11 @@ class TaskController extends RenderViews
             'tasks' => $this->task->all()
         ]);
     }
+
+    public function show($id)
+    {
+        $idTask = $id[0];
+        $task = new TaskModel();
+        $this->loadView('task', ['task' => $task->fetchById($idTask)]);
+    }
 }

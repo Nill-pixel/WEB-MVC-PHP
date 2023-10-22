@@ -148,6 +148,7 @@
         </nav>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/datepicker.min.js"></script>
     <script src="node_modules\preline\dist\preline.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </body>
