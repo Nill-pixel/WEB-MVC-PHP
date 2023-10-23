@@ -33,8 +33,8 @@ class TaskModel extends Database
     }
     public function today()
     {
-        $time = new DateM;
-        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data =");
+        $currentDate = date('Y-m-d');
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data LIKE '$currentDate%'");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {

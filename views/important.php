@@ -1,5 +1,5 @@
 <?php
-require_once('layout.php')
+require_once('layout/layout.php')
     ?>
 <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
     <div class="bg-gradient-to-r from-yellow-600 to-blue-600 rounded-md">

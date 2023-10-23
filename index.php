@@ -14,6 +14,8 @@ spl_autoload_register(function ($file) {
         require_once __DIR__ . "/models/dto/user/$file.php";
     } else if (file_exists(__DIR__ . "/models/connect/$file.php")) {
         require_once __DIR__ . "/models/connect/$file.php";
+    } elseif (file_exists(__DIR__ . "/models/dto/$file.php")) {
+        require_once __DIR__ . "/models/dto/$file.php";
     }
 });
 
