@@ -11,4 +11,6 @@ $routes = [
     '/tasks/{id}' => 'TaskController@show',
     '/update' => 'TaskController@update',
     '/important' => 'TaskController@showImportant',
+    '/planned' => 'TaskController@planned',
+    '/all' => 'TaskController@all',
 ];

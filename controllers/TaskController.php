@@ -45,16 +45,23 @@ class TaskController extends RenderViews
         $this->task->update();
     }
 
+    public function planned()
+    {
+        $this->loadView('planned', [
+            'tasks' => $this->task->all()
+        ]);
+    }
     public function index()
     {
         $this->loadView('todo', [
             'tasks' => $this->task->today()
         ]);
     }
-    public function today()
+
+    public function all()
     {
-        $this->loadView('planned', [
-            'tasks' => $this->task->all()
+        $this->loadView('all', [
+            'tasks' => $this->task->allTask()
         ]);
     }
 

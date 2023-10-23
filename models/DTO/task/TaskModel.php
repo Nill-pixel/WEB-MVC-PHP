@@ -15,10 +15,10 @@ class TaskModel extends Database
     }
     public function index()
     {
-        $stm = $this->pdo->prepare("INSERT INTO tasks (id, name, data) VALUES (uuid(),?,NOW())");
+        $stm = $this->pdo->prepare("INSERT INTO tasks (id, name) VALUES (uuid(),?)");
         $stm->execute([$this->name]);
 
-        header('Location: /app/todo');
+        header('Location: /app/planned');
         echo json_encode(["msg" => "Created"]);
     }
 
@@ -45,6 +45,16 @@ class TaskModel extends Database
     public function allImportant()
     {
         $stm = $this->pdo->query("SELECT * FROM tasks WHERE important = 1");
+        if ($stm->rowCount() > 0) {
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return [];
+        }
+    }
+
+    public function allTask()
+    {
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data IS NULL");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
