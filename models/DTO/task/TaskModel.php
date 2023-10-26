@@ -52,9 +52,9 @@ class TaskModel extends Database
         }
     }
 
-    public function allTask()
+    public function planned()
     {
-        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data IS NULL");
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data IS NOT NULL");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {

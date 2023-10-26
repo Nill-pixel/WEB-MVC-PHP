@@ -70,4 +70,26 @@ class UserModel extends Database
         header("Location: /app");
     }
 
+    public function delete($id)
+    {
+        $stm = $this->pdo->prepare('DELETE FROM users WHERE id = ?');
+        $stm->execute([$id]);
+        header('Location: /app');
+    }
+
+    public function login()
+    {
+        $stm = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $stm->bindParam(":email", $this->email);
+        $stm->execute();
+
+        $user = $stm->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($this->password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            header("Location: /app/todo");
+        } else {
+            return false;
+        }
+    }
 }

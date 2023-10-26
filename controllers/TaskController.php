@@ -48,7 +48,7 @@ class TaskController extends RenderViews
     public function planned()
     {
         $this->loadView('planned', [
-            'tasks' => $this->task->all()
+            'tasks' => $this->task->planned()
         ]);
     }
     public function index()
@@ -61,7 +61,7 @@ class TaskController extends RenderViews
     public function all()
     {
         $this->loadView('all', [
-            'tasks' => $this->task->allTask()
+            'tasks' => $this->task->all()
         ]);
     }
 

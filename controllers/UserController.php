@@ -58,13 +58,22 @@ class UserController extends RenderViews
         header('Location: /app/profile');
     }
 
-    public function delete()
+    public function delete($id)
     {
+        $idUser = $id[0];
+        $this->user->delete($idUser);
 
     }
 
     public function logout()
     {
         $this->user->logout();
+    }
+
+    public function login()
+    {
+        $this->user->email = $_POST['email'];
+        $this->user->password = $_POST['password'];
+        $this->user->login();
     }
 }
