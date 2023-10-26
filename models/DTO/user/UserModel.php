@@ -45,11 +45,29 @@ class UserModel extends Database
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function update()
+    {
+        $userId = $_SESSION['user_id'];
+        $stm = $this->pdo->prepare('UPDATE users SET name = :name, password = :password, email = :email WHERE id = :id');
+        $stm->bindParam(':name', $this->name);
+        $stm->bindParam(':email', $this->email);
+        $stm->bindParam(':password', $this->password);
+        $stm->bindParam(':id', $userId);
+
+        $stm->execute();
+    }
+
     public function fetchById($id)
     {
         $stm = $this->pdo->prepare("SELECT * FROM users WHERE id = ?");
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header("Location: /app");
     }
 
 }

@@ -2,7 +2,7 @@
 require_once('layout/layout.php')
     ?>
 <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
-    <div class="bg-gradient-to-r from-pink-600 to-blue-300 rounded-md">
+    <div class="bg-gradient-to-r from-blue-600 to-pink-300 rounded-md">
         <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <!-- Grid -->
             <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">

@@ -3,7 +3,7 @@
 require_once('layout/layout.php')
     ?>
 <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
-    <div class="bg-gradient-to-r from-orange-400 to-blue-300 rounded-md">
+    <div class="bg-gradient-to-r from-blue-600 to-orange-300 rounded-md">
         <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <!-- Grid -->
             <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
@@ -40,8 +40,12 @@ require_once('layout/layout.php')
         </div>
 
         <div class="max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-1 sm:gap-6">
+            <div class="grid sm:grid-cols-1 lg:grid-cols-1 gap-1 sm:gap-6">
                 <div class="bg-white overflow-hidden shadow rounded-lg border">
+                    <a href="logout"
+                        class="text-white bg-gradient-to-r bg-red-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                        Logout
+                    </a>
                     <div class="px-4 py-5 sm:px-6">
                         <h3 class="text-lg leading-6 font-medium text-gray-900">
                             User Profile
@@ -50,14 +54,14 @@ require_once('layout/layout.php')
                             This is some information about the user.
                         </p>
                     </div>
-                    <form action="" method="post">
+                    <form action="updateUser" method="post">
                         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
                             <dl class="sm:divide-y sm:divide-gray-200">
                                 <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                     <dt class="text-sm font-medium text-gray-500">
                                         Full name
                                     </dt>
-                                    <input placeholder="<?php echo $user['name']; ?>" type="text"
+                                    <input name="name" placeholder="<?php echo $user['name']; ?>" type="text"
                                         class="bg-gray-50 border border-gray-30 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     </input>
                                 </div>
@@ -65,15 +69,24 @@ require_once('layout/layout.php')
                                     <dt class="text-sm font-medium text-gray-500">
                                         Email address
                                     </dt>
-                                    <input placeholder="<?php echo $user['email']; ?>" type="text"
+                                    <input name="email" placeholder="<?php echo $user['email']; ?>" type="text"
                                         class="bg-gray-50 border border-gray-30 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
 
                                     </input>
                                 </div>
+                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">
+                                        Password
+                                    </dt>
+                                    <input name="password" placeholder="*************" type="password"
+                                        class="bg-gray-50 border border-gray-30 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    </input>
+                                </div>
+
                             </dl>
                         </div>
-                    </form>
                 </div>
+
                 <button type="submit"
                     class="text-white bg-gradient-to-r from-blue-400 via-orange-500 to-blue-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                     Change
@@ -82,7 +95,7 @@ require_once('layout/layout.php')
                     class="text-white bg-gradient-to-r from-orange-400 via-red-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                     Delete
                 </a>
-
+                </form>
                 <div id="hs-cookies"
                     class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
                     <div

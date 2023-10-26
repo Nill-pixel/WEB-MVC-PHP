@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class TaskModel extends Database
 {
     public $name;
