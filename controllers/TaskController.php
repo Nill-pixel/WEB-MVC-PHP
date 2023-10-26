@@ -65,11 +65,16 @@ class TaskController extends RenderViews
         ]);
     }
 
+    public function delete($id)
+    {
+        $idTask = $id[0];
+        $this->task->delete($idTask);
+    }
+
     public function show($id)
     {
         $idTask = $id[0];
-        $task = new TaskModel();
-        $this->loadView('task', ['task' => $task->fetchById($idTask)]);
+        $this->loadView('task', ['task' => $this->task->fetchById($idTask)]);
     }
 
     public function showImportant()

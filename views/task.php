@@ -108,6 +108,7 @@ require_once('layout/layoutFun.php');
                                     class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
                                 </h3>
                             </div>
+
                             <div class="w-96">
                                 <div class="relative w-full min-w-[200px]">
                                     <textarea name="description"
@@ -120,15 +121,16 @@ require_once('layout/layoutFun.php');
                                 </div>
                             </div>
                         </div>
-
-                        <button type="submit"
-                            class=" right-1/5 m-10 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-blue-500 to-blue-200 group-hover:from-blue-500 group-hover:to-blue-200 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
-                            <span
-                                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                Change
-                            </span>
-                        </button>
+                        <div class="m-10">
+                            <a href="/app/delete/<?php echo $task['id'] ?>"
+                                class="m-10 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Delete</button>
+                            </a>
+                            <button type="submit"
+                                class="m-10 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">Change</button>
+                            </button>
+                        </div>
                 </form>
+
 
 
                 <div id="hs-cookies"

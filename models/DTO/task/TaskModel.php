@@ -81,4 +81,11 @@ class TaskModel extends Database
 
         header('Location: /app/tasks/' . $this->task_id);
     }
+
+    public function delete($id)
+    {
+        $stm = $this->pdo->prepare('DELETE FROM tasks WHERE id = ?');
+        $stm->execute([$id]);
+        header('Location: /app/planned');
+    }
 }

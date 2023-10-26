@@ -2,6 +2,9 @@
 
 class UserModel extends Database
 {
+    public $name;
+    public $password;
+    public $email;
     private $pdo;
 
     public function __construct()
@@ -17,6 +20,20 @@ class UserModel extends Database
         } else {
             return [];
         }
+    }
+
+    public function signUp()
+    {
+        $hashPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        $stm = $this->pdo->prepare("INSERT INTO users(id, name, email, password) VALUES (uuid(),:name,:email,:password)");
+        $stm->bindParam(':name', $this->name);
+        $stm->bindParam(':email', $this->email);
+        $stm->bindParam(':password', $hashPassword);
+
+        $userId = $this->pdo->lastInsertId();
+        $_SESSION['user_id'] = $userId;
+
+        $stm->execute();
     }
 
     public function fetchById($id)

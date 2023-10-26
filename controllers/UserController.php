@@ -1,6 +1,11 @@
 <?php
 class UserController extends RenderViews
 {
+    private $user;
+    public function __construct()
+    {
+        $this->user = new UserModel();
+    }
     public function index()
     {
 
@@ -10,8 +15,20 @@ class UserController extends RenderViews
     {
         $idUser = $id[0];
 
-        $user = new UserModel();
+        $this->loadView('users', ['user' => $this->user->fetchById($idUser)]);
+    }
 
-        $this->loadView('users', ['user' => $user->fetchById($idUser)]);
+    public function signUp()
+    {
+        $this->user->name = $_POST['name'];
+        $this->user->email = $_POST['email'];
+        $this->user->password = $_POST['password'];
+
+        $this->user->signUp();
+
+        if (isset($_SESSION['user_id'])) {
+            header('Location: /app/todo');
+        }
+
     }
 }
