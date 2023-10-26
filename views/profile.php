@@ -16,7 +16,6 @@ require_once('layout/layout.php')
                         Add a task
                     </a>
                 </div>
-                <!-- End Col -->
 
                 <div class="flex items-center">
                     <div
