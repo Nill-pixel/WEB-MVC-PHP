@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class UserModel extends Database
 {
     public $name;
@@ -29,11 +29,20 @@ class UserModel extends Database
         $stm->bindParam(':name', $this->name);
         $stm->bindParam(':email', $this->email);
         $stm->bindParam(':password', $hashPassword);
+        $stm->execute();
 
         $userId = $this->pdo->lastInsertId();
         $_SESSION['user_id'] = $userId;
+    }
 
+    public function getUser()
+    {
+        $userId = $_SESSION['user_id'];
+        $stm = $this->pdo->prepare('SELECT * FROM users WHERE id = :id');
+        $stm->bindParam(':id', $userId);
         $stm->execute();
+
+        return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
     public function fetchById($id)
@@ -42,4 +51,5 @@ class UserModel extends Database
         $stm->execute([$id]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
+
 }

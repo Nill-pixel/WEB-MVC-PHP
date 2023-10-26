@@ -4,6 +4,7 @@ $routes = [
     '/' => 'HomeController@index',
     '/users/{id}' => 'UserController@show',
     '/signUpUser' => 'UserController@signUp',
+    '/profile' => 'UserController@profile',
     '/signIn' => 'HomeController@signIn',
     '/signUp' => 'HomeController@signUp',
     '/add' => 'HomeController@add',

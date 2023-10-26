@@ -27,8 +27,13 @@ class UserController extends RenderViews
         $this->user->signUp();
 
         if (isset($_SESSION['user_id'])) {
-            header('Location: /app/todo');
+            header('Location: /app/profile');
         }
 
+    }
+
+    public function profile()
+    {
+        $this->loadView('profile', ['user' => $this->user->getUser()]);
     }
 }
