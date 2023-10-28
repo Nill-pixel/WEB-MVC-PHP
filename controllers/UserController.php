@@ -1,10 +1,10 @@
 <?php
 class UserController extends RenderViews
 {
-    private $user;
+    private $userDao;
     public function __construct()
     {
-        $this->user = new UserModel();
+        $this->userDao = new UserDAO();
     }
     public function index()
     {
@@ -15,65 +15,67 @@ class UserController extends RenderViews
     {
         $idUser = $id[0];
 
-        $this->loadView('users', ['user' => $this->user->fetchById($idUser)]);
+        $this->loadView('users', ['user' => $this->userDao->fetchById($idUser)]);
     }
 
     public function signUp()
     {
-        $this->user->name = $_POST['name'];
-        $this->user->email = $_POST['email'];
-        $this->user->password = $_POST['password'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        $this->user->signUp();
+        $userDTO = new UserDTO($name, $password, $email);
+        $this->userDao->signUp($userDTO);
 
         if (isset($_SESSION['user_id'])) {
             header('Location: /app/todo');
         }
-
     }
 
     public function profile()
     {
-        $this->loadView('profile', ['user' => $this->user->getUser()]);
+        $this->loadView('profile', ['user' => $this->userDao->getUser()]);
     }
 
     public function update()
     {
-        $oldUser = $this->user->getUser();
-        $this->user->name = $_POST['name'];
-        $this->user->email = $_POST['email'];
-        $this->user->password = $_POST['password'];
+        $oldUser = $this->userDao->getUser();
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        if (empty($this->user->name = $_POST['name'])) {
-            $this->user->name = $oldUser['name'];
+        if (empty($name = $_POST['name'])) {
+            $name = $oldUser['name'];
         }
-        if (empty($this->user->email = $_POST['email'])) {
-            $this->user->email = $oldUser['email'];
+        if (empty($email = $_POST['email'])) {
+            $email = $oldUser['email'];
         }
-        if (empty($this->user->password = $_POST['password'])) {
-            $this->user->password = $oldUser['password'];
+        if (empty($password = $_POST['password'])) {
+            $password = $oldUser['password'];
         }
 
-        $this->user->update();
+        $userDTO = new UserDTO($name, $password, $email);
+        $this->userDao->update($userDTO);
         header('Location: /app/profile');
     }
 
     public function delete($id)
     {
         $idUser = $id[0];
-        $this->user->delete($idUser);
+        $this->userDao->delete($idUser);
 
     }
 
     public function logout()
     {
-        $this->user->logout();
+        $this->userDao->logout();
     }
 
     public function login()
     {
-        $this->user->email = $_POST['email'];
-        $this->user->password = $_POST['password'];
-        $this->user->login();
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $this->userDao->login($email, $password);
     }
 }

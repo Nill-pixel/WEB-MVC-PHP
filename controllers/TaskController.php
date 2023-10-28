@@ -83,4 +83,14 @@ class TaskController extends RenderViews
             'tasks' => $this->task->allImportant()
         ]);
     }
+
+    public function search()
+    {
+        $this->task->name = $_POST['name'];
+
+    }
+    public function add()
+    {
+        $this->loadView('addTask', []);
+    }
 }

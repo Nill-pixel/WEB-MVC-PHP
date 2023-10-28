@@ -4,7 +4,7 @@ class HomeController extends RenderViews
 {
     public function index()
     {
-        $users = new UserModel();
+        $users = new UserDAO();
 
         $this->loadView('home', [
             'title' => 'Home Page',
@@ -27,10 +27,5 @@ class HomeController extends RenderViews
     public function signUp()
     {
         $this->loadView('signUp', []);
-    }
-
-    public function add()
-    {
-        $this->loadView('addTask', []);
     }
 }

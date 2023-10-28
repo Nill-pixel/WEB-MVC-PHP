@@ -1,15 +1,11 @@
 <?php
 session_start();
-class UserModel extends Database
+class UserDAO
 {
-    public $name;
-    public $password;
-    public $email;
     private $pdo;
-
     public function __construct()
     {
-        $this->pdo = $this->getConnection();
+        $this->pdo = Database::getConnection();
     }
 
     public function fetch()
@@ -22,12 +18,15 @@ class UserModel extends Database
         }
     }
 
-    public function signUp()
+    public function signUp(UserDTO $user)
     {
-        $hashPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        $name = $user->getName();
+        echo $name;
+
+        $hashPassword = password_hash($user->password, PASSWORD_DEFAULT);
         $stm = $this->pdo->prepare("INSERT INTO users(id, name, email, password) VALUES (uuid(),:name,:email,:password)");
-        $stm->bindParam(':name', $this->name);
-        $stm->bindParam(':email', $this->email);
+        $stm->bindParam(':name', $user->name);
+        $stm->bindParam(':email', $user->email);
         $stm->bindParam(':password', $hashPassword);
         $stm->execute();
 
@@ -45,13 +44,13 @@ class UserModel extends Database
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function update()
+    public function update(UserDTO $user)
     {
         $userId = $_SESSION['user_id'];
         $stm = $this->pdo->prepare('UPDATE users SET name = :name, password = :password, email = :email WHERE id = :id');
-        $stm->bindParam(':name', $this->name);
-        $stm->bindParam(':email', $this->email);
-        $stm->bindParam(':password', $this->password);
+        $stm->bindParam(':name', $user->name);
+        $stm->bindParam(':email', $user->email);
+        $stm->bindParam(':password', $user->password);
         $stm->bindParam(':id', $userId);
 
         $stm->execute();
@@ -77,15 +76,15 @@ class UserModel extends Database
         header('Location: /app');
     }
 
-    public function login()
+    public function login($email, $password)
     {
         $stm = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $stm->bindParam(":email", $this->email);
+        $stm->bindParam(":email", $email);
         $stm->execute();
 
         $user = $stm->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($this->password, $user['password'])) {
+        if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             header("Location: /app/todo");
         } else {
