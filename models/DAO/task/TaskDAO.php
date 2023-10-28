@@ -1,22 +1,17 @@
 <?php
 session_start();
-class TaskModel extends Database
+class TaskDAO
 {
-    public $name;
-    public $description;
-    public $task_id;
-    public $task_date;
-    public $task_check;
     private $pdo;
 
     public function __construct()
     {
-        $this->pdo = $this->getConnection();
+        $this->pdo = Database::getConnection();
     }
-    public function index()
+    public function create($name)
     {
-        $stm = $this->pdo->prepare("INSERT INTO tasks (id, name) VALUES (uuid(),?)");
-        $stm->execute([$this->name]);
+        $stm = $this->pdo->prepare("INSERT INTO tasks (id, name, data) VALUES (uuid(),?,NULL)");
+        $stm->execute([$name]);
 
         header('Location: /app/planned');
         echo json_encode(["msg" => "Created"]);
@@ -69,17 +64,17 @@ class TaskModel extends Database
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function update()
+    public function update(TaskDTO $task)
     {
         $stm = $this->pdo->prepare("UPDATE tasks SET name = :name, data = :data, description = :description, important = :important WHERE id = :id ");
-        $stm->bindParam(':name', $this->name);
-        $stm->bindParam(':description', $this->description);
-        $stm->bindParam(':id', $this->task_id);
-        $stm->bindParam(':important', $this->task_check);
-        $stm->bindParam(':data', $this->task_date);
+        $stm->bindParam(':name', $task->name);
+        $stm->bindParam(':description', $task->description);
+        $stm->bindParam(':id', $task->task_id);
+        $stm->bindParam(':important', $task->task_check);
+        $stm->bindParam(':data', $task->task_date);
         $stm->execute();
 
-        header('Location: /app/tasks/' . $this->task_id);
+        header('Location: /app/tasks/' . $task->task_id);
     }
 
     public function delete($id)

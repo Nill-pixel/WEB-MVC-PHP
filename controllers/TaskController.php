@@ -4,23 +4,22 @@ class TaskController extends RenderViews
     private $task;
     public function __construct()
     {
-        $this->task = new TaskModel();
+        $this->task = new TaskDAO();
     }
     public function create()
     {
-        $this->task->name = $_POST['name'];
-
-        $this->task->index();
+        $name = $_POST['name'];
+        $this->task->create($name);
     }
 
     public function update()
     {
         $oldTask = $this->task->fetchById($this->task->task_id = $_POST['id']);
-        $this->task->name = $_POST['name'];
-        $this->task->description = $_POST['description'];
-        $this->task->task_date = $_POST['data'];
-        $this->task->task_id = $_POST['id'];
-        $this->task->task_check = $_POST['check'];
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $task_date = $_POST['data'];
+        $task_id = $_POST['id'];
+        $task_check = $_POST['check'];
         $date = $_POST['data'];
         $dateTime = new DateTime($date);
 
@@ -29,20 +28,21 @@ class TaskController extends RenderViews
             return;
         }
 
-        if (empty($this->task->name = $_POST['name'])) {
-            $this->task->name = $oldTask['name'];
+        if (empty($name)) {
+            $name = $oldTask['name'];
         }
-        if (empty($this->task->description = $_POST['description'])) {
-            $this->task->description = $oldTask['description'];
+        if (empty($description)) {
+            $description = $oldTask['description'];
         }
-        if (empty($this->task->task_check = $_POST['check'])) {
-            $this->task->task_check = 0;
+        if (empty($task_check)) {
+            $task_check = 0;
         }
-        if (empty($this->task->task_date = $_POST['data'])) {
-            $this->task->task_date = $oldTask['data'];
+        if (empty($task_date)) {
+            $task_date = $oldTask['data'];
         }
 
-        $this->task->update();
+        $updateTask = new TaskDTO($name, $description, $task_check, $task_id, $task_date);
+        $this->task->update($updateTask);
     }
 
     public function planned()
