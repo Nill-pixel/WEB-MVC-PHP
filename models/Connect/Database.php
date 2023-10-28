@@ -2,7 +2,6 @@
 
 class Database
 {
-
     public static function getConnection()
     {
         try {
@@ -12,5 +11,4 @@ class Database
 
         }
     }
-
 }
