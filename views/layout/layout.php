@@ -49,23 +49,24 @@ require_once('views\session.php');
             <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">To do List</a>
         </div>
 
-        <div class="static p-5">
-            <label for="hs-trailing-button-add-on-with-icon-and-button" class="sr-only">Label</label>
-            <div class="relative flex rounded-md shadow-sm">
-                <input type="text" id="hs-trailing-button-add-on-with-icon-and-button"
-                    name="hs-trailing-button-add-on-with-icon-and-button"
-                    class="py-3 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
-                    <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="currentColor" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
+        <form action="/app/search" method="post">
+            <div class="static p-5">
+                <label for="hs-trailing-button-add-on-with-icon-and-button" class="sr-only">Label</label>
+                <div class="relative flex rounded-md shadow-sm">
+                    <input type="text" id="hs-trailing-button-add-on-with-icon-and-button" name="name"
+                        class="py-3 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
+                        <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </div>
+                    <button type="submit"
+                        class="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center rounded-r-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm">Search</button>
                 </div>
-                <button type="button"
-                    class="py-3 px-4 inline-flex flex-shrink-0 justify-center items-center rounded-r-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm">Search</button>
             </div>
-        </div>
+        </form>
         <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
             <ul class="space-y-1.5">
                 <li class="hs-accordion" id="users-accordion">
@@ -134,6 +135,16 @@ require_once('views\session.php');
                         </svg>
 
                         All
+                    </a></li>
+                <li><a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300"
+                        href="taskCompleted">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+
+                        Completed
                     </a></li>
                 <li><a class="flex items-center border-t-2 gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300"
                         href="profile">

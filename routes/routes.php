@@ -20,4 +20,7 @@ $routes = [
     '/planned' => 'TaskController@planned',
     '/all' => 'TaskController@all',
     '/delete/{id}' => 'TaskController@delete',
+    '/completed' => 'TaskController@completed',
+    '/taskCompleted' => 'TaskController@taskCompleted',
+    '/search' => 'TaskController@search',
 ];

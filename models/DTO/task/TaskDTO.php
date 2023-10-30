@@ -27,6 +27,12 @@ class TaskDTO
      */
     public $task_date;
 
+    /**
+     * Summary of task_completed
+     * @var 
+     */
+    public $task_completed;
+
     public function __construct($name, $description, $task_check, $task_id, $task_date)
     {
         $this->name = $name;

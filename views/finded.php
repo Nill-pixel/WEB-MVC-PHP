@@ -2,7 +2,7 @@
 require_once('layout/layout.php')
     ?>
 <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
-    <div class="bg-gradient-to-r from-blue-600 to-blue-300 rounded-md">
+    <div class="bg-gradient-to-r from-blue-600 to-red-300 rounded-md">
         <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <!-- Grid -->
             <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
@@ -50,6 +50,8 @@ require_once('layout/layout.php')
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
                                 </svg>
+
+
                                 <div class="grow ml-5">
                                     <h3
                                         class="group-hover:text-blue-600 font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
@@ -59,36 +61,8 @@ require_once('layout/layout.php')
                                         Just head to «Help» in the app
                                     </p>
                                 </div>
-
                             </div>
                         </div>
-                        <!--  Check -->
-                        <form action="/app/completed" method="post">
-                            <div class="inline-flex items-center">
-                                <label class="relative flex items-center p-3 rounded-full cursor-pointer" for="checkbox"
-                                    data-ripple-dark="true">
-                                    <input type="hidden" name="id" value="<?php echo $task['id'] ?>" />
-                                    <input type="checkbox"
-                                        class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-blue-500 checked:bg-blue-500 checked:before:bg-blue-500 hover:before:opacity-10"
-                                        id="checkbox" name="completed" value="1" <?php if ($task['completed'] == 1) {
-                                            echo "checked";
-                                        } ?> />
-                                    <div
-                                        class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20"
-                                            fill="currentColor" stroke="currentColor" stroke-width="1">
-                                            <path fill-rule="evenodd"
-                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </label>
-                            </div>
-                            <button type="submit"
-                                class=" p-1 m-2 inline-flex justify-center items-center gap-1 rounded-md bg-blue-100 border border-transparent font-semibold text-blue-500 hover:text-white hover:bg-blue-500 focus:outline-none focus:ring-2 ring-offset-white focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm">
-                                completed
-                            </button>
-                        </form>
                     </a>
                 <?php endforeach; ?>
 

@@ -86,11 +86,26 @@ class TaskController extends RenderViews
 
     public function search()
     {
-        $this->task->name = $_POST['name'];
+        $name = $_POST['name'];
+        $this->loadView('finded', ['tasks' => $this->task->search($name)]);
 
     }
     public function add()
     {
         $this->loadView('addTask', []);
+    }
+
+    public function completed()
+    {
+        $completed = $_POST['completed'];
+        $id = $_POST['id'];
+        $this->task->completed($completed, $id);
+    }
+
+    public function taskCompleted()
+    {
+        $this->loadView('completed', [
+            'tasks' => $this->task->taskCompleted()
+        ]);
     }
 }

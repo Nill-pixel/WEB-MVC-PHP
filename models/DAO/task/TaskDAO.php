@@ -29,7 +29,7 @@ class TaskDAO
     public function today()
     {
         $currentDate = date('Y-m-d');
-        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data LIKE '$currentDate%'");
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data LIKE '$currentDate%' AND completed IS NULL");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
@@ -82,5 +82,35 @@ class TaskDAO
         $stm = $this->pdo->prepare('DELETE FROM tasks WHERE id = ?');
         $stm->execute([$id]);
         header('Location: /app/planned');
+    }
+
+    public function completed($completed, $id)
+    {
+        $stm = $this->pdo->prepare('UPDATE tasks SET completed = :completed WHERE id = :id');
+        $stm->bindParam(':completed', $completed);
+        $stm->bindParam(':id', $id);
+        $stm->execute();
+
+        header('Location: /app/todo');
+    }
+
+    public function taskCompleted()
+    {
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE completed IS NOT NULL");
+        if ($stm->rowCount() > 0) {
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return [];
+        }
+    }
+
+    public function search($name)
+    {
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE name LIKE '$name%'");
+        if ($stm->rowCount() > 0) {
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return [];
+        }
     }
 }
