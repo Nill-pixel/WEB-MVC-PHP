@@ -3,15 +3,18 @@ session_start();
 class TaskDAO
 {
     private $pdo;
+    private $userId;
 
     public function __construct()
     {
         $this->pdo = Database::getConnection();
+        $this->userId = $_SESSION['user_id'];
     }
     public function create($name)
     {
-        $stm = $this->pdo->prepare("INSERT INTO tasks (id, name, data) VALUES (uuid(),?,NULL)");
-        $stm->execute([$name]);
+
+        $stm = $this->pdo->prepare("INSERT INTO tasks (id, name, data, idUser) VALUES (uuid(),?,NULL,?)");
+        $stm->execute([$name, $this->userId]);
 
         header('Location: /app/planned');
         echo json_encode(["msg" => "Created"]);
@@ -19,7 +22,7 @@ class TaskDAO
 
     public function all()
     {
-        $stm = $this->pdo->query("SELECT * FROM tasks");
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE idUser = $this->userId");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
@@ -39,7 +42,7 @@ class TaskDAO
 
     public function allImportant()
     {
-        $stm = $this->pdo->query("SELECT * FROM tasks WHERE important = 1");
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE important = 1 AND idUser = $this->userId");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
@@ -49,7 +52,7 @@ class TaskDAO
 
     public function planned()
     {
-        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data IS NOT NULL");
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE data IS NOT NULL AND idUser = $this->userId");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
@@ -59,8 +62,8 @@ class TaskDAO
 
     public function fetchById($id)
     {
-        $stm = $this->pdo->prepare("SELECT * FROM tasks WHERE id = ?");
-        $stm->execute([$id]);
+        $stm = $this->pdo->prepare("SELECT * FROM tasks WHERE id = ? AND idUser = ?");
+        $stm->execute([$id, $this->userId]);
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -96,7 +99,7 @@ class TaskDAO
 
     public function taskCompleted()
     {
-        $stm = $this->pdo->query("SELECT * FROM tasks WHERE completed IS NOT NULL");
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE completed IS NOT NULL AND idUser = $this->userId");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {
@@ -106,7 +109,7 @@ class TaskDAO
 
     public function search($name)
     {
-        $stm = $this->pdo->query("SELECT * FROM tasks WHERE name LIKE '$name%'");
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE name LIKE '$name%' AND idUser = $this->userId");
         if ($stm->rowCount() > 0) {
             return $stm->fetchAll(PDO::FETCH_ASSOC);
         } else {

@@ -58,7 +58,7 @@ require_once('layout/layout.php')
                                                 class="sr-only">Add a task</span></label>
                                         <input type="text" name="name" id="hs-search-article-1"
                                             class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400"
-                                            placeholder="Add a task">
+                                            required placeholder="Add a task">
                                     </div>
                                     <div class="flex-[0_0_auto]">
                                         <button type="submit"
