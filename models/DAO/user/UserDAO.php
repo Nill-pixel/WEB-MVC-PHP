@@ -1,5 +1,4 @@
 <?php
-session_start();
 class UserDAO
 {
     private $pdo;
@@ -20,9 +19,6 @@ class UserDAO
 
     public function signUp(UserDTO $user)
     {
-        $name = $user->getName();
-        echo $name;
-
         $hashPassword = password_hash($user->password, PASSWORD_DEFAULT);
         $stm = $this->pdo->prepare("INSERT INTO users(id, name, email, password) VALUES (uuid(),:name,:email,:password)");
         $stm->bindParam(':name', $user->name);
