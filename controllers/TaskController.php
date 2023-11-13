@@ -2,9 +2,11 @@
 class TaskController extends RenderViews
 {
     private $task;
+    private $list;
     public function __construct()
     {
         $this->task = new TaskDAO();
+        $this->list = new ListDAO();
     }
     public function create()
     {
@@ -48,7 +50,8 @@ class TaskController extends RenderViews
     public function planned()
     {
         $this->loadView('tasks', [
-            'tasks' => $this->task->planned()
+            'tasks' => $this->task->planned(),
+            'lists' => $this->list->getList()
         ]);
     }
     public function index()
