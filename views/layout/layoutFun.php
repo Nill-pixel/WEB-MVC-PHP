@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require_once('views\session.php');
+require_once('views\layout\session.php');
 ?>
 
 <head>

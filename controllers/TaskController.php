@@ -47,7 +47,7 @@ class TaskController extends RenderViews
 
     public function planned()
     {
-        $this->loadView('planned', [
+        $this->loadView('tasks', [
             'tasks' => $this->task->planned()
         ]);
     }
@@ -60,7 +60,7 @@ class TaskController extends RenderViews
 
     public function all()
     {
-        $this->loadView('all', [
+        $this->loadView('tasks', [
             'tasks' => $this->task->all()
         ]);
     }
@@ -79,7 +79,7 @@ class TaskController extends RenderViews
 
     public function showImportant()
     {
-        $this->loadView('important', [
+        $this->loadView('tasks', [
             'tasks' => $this->task->allImportant()
         ]);
     }
@@ -87,7 +87,7 @@ class TaskController extends RenderViews
     public function search()
     {
         $name = $_POST['name'];
-        $this->loadView('finded', ['tasks' => $this->task->search($name)]);
+        $this->loadView('tasks', ['tasks' => $this->task->search($name)]);
 
     }
     public function add()
@@ -104,7 +104,7 @@ class TaskController extends RenderViews
 
     public function taskCompleted()
     {
-        $this->loadView('completed', [
+        $this->loadView('tasks', [
             'tasks' => $this->task->taskCompleted()
         ]);
     }

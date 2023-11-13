@@ -2,7 +2,7 @@
 require_once('layout/layout.php')
     ?>
 <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
-    <div class="bg-gradient-to-r from-blue-600 to-yellow-300 rounded-md">
+    <div class="bg-gradient-to-r from-blue-600 to-pink-300 rounded-md">
         <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
             <!-- Grid -->
             <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
@@ -23,9 +23,10 @@ require_once('layout/layout.php')
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                         </svg>
-                        Important
+
+                        My Day
                         </a>
                         <span class="inline-block border-r border-white/[.3] w-px h-5 mx-2"></span>
                         <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md font-medium text-white hover:bg-white/[.1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 transition-all text-sm"
@@ -39,7 +40,9 @@ require_once('layout/layout.php')
 
         <div class="max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <?php foreach ($tasks as $task): ?>
+                <?php foreach ($tasks as $task):
+
+                    ?>
                     <a class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
                         href="/app/tasks/<?php echo $task['id'] ?>">
                         <div class="p-4 md:p-5">
