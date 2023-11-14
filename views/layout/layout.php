@@ -176,9 +176,9 @@ require_once('views\layout\session.php');
 
                     <div id="users-accordion"
                         class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-                        <?php foreach ($lists as $list): ?>
-                            <ul class="hs-accordion-group ps-3 pt-2" data-hs-accordion-always-open>
-                                <li class="hs-accordion" id="users-accordion-sub-1">
+                        <ul class="hs-accordion-group ps-3 pt-2" data-hs-accordion-always-open>
+                            <?php foreach ($lists as $list): ?>
+                                <li class="hs-accordion m-2" id="users-accordion-sub-1">
                                     <button type="button"
                                         class="hs-accordion-toggle hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                                         <?php echo $list['name']; ?>

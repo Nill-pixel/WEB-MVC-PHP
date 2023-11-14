@@ -2,9 +2,11 @@
 class UserController extends RenderViews
 {
     private $userDao;
+    private $list;
     public function __construct()
     {
         $this->userDao = new UserDAO();
+        $this->list = new ListDAO();
     }
     public function index()
     {
@@ -15,7 +17,10 @@ class UserController extends RenderViews
     {
         $idUser = $id[0];
 
-        $this->loadView('users', ['user' => $this->userDao->fetchById($idUser)]);
+        $this->loadView('users', [
+            'user' => $this->userDao->fetchById($idUser),
+            'lists' => $this->list->getList()
+        ]);
     }
 
     public function signUp()
@@ -34,7 +39,10 @@ class UserController extends RenderViews
 
     public function profile()
     {
-        $this->loadView('profile', ['user' => $this->userDao->getUser()]);
+        $this->loadView('profile', [
+            'user' => $this->userDao->getUser(),
+            'lists' => $this->list->getList()
+        ]);
     }
 
     public function update()

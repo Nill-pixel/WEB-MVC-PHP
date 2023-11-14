@@ -57,14 +57,16 @@ class TaskController extends RenderViews
     public function index()
     {
         $this->loadView('todo', [
-            'tasks' => $this->task->today()
+            'tasks' => $this->task->today(),
+            'lists' => $this->list->getList()
         ]);
     }
 
     public function all()
     {
         $this->loadView('tasks', [
-            'tasks' => $this->task->all()
+            'tasks' => $this->task->all(),
+            'lists' => $this->list->getList()
         ]);
     }
 
@@ -77,25 +79,32 @@ class TaskController extends RenderViews
     public function show($id)
     {
         $idTask = $id[0];
-        $this->loadView('task', ['task' => $this->task->fetchById($idTask)]);
+        $this->loadView('task', [
+            'task' => $this->task->fetchById($idTask),
+            'lists' => $this->list->getList()
+        ]);
     }
 
     public function showImportant()
     {
         $this->loadView('tasks', [
-            'tasks' => $this->task->allImportant()
+            'tasks' => $this->task->allImportant(),
+            'lists' => $this->list->getList()
         ]);
     }
 
     public function search()
     {
         $name = $_POST['name'];
-        $this->loadView('tasks', ['tasks' => $this->task->search($name)]);
+        $this->loadView('tasks', [
+            'tasks' => $this->task->search($name),
+            'lists' => $this->list->getList()
+        ]);
 
     }
     public function add()
     {
-        $this->loadView('addTask', []);
+        $this->loadView('addTask', ['lists' => $this->list->getList()]);
     }
 
     public function completed()
@@ -108,7 +117,8 @@ class TaskController extends RenderViews
     public function taskCompleted()
     {
         $this->loadView('tasks', [
-            'tasks' => $this->task->taskCompleted()
+            'tasks' => $this->task->taskCompleted(),
+            'lists' => $this->list->getList()
         ]);
     }
 }
