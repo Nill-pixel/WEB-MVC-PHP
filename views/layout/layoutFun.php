@@ -144,6 +144,7 @@ require_once('views\layout\session.php');
                         </svg>
 
                         Completed
+                        
                     </a></li>
                 <li class="hs-accordion border-t-2  rounded-md p-2" id="users-accordion">
                     <button type="button"
