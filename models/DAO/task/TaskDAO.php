@@ -12,7 +12,6 @@ class TaskDAO
     }
     public function create($name)
     {
-
         $stm = $this->pdo->prepare("INSERT INTO tasks (id, name, data, idUser) VALUES (uuid(),?,NULL,?)");
         $stm->execute([$name, $this->userId]);
 
