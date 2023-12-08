@@ -86,10 +86,9 @@ class TaskDAO
         header('Location: /app/planned');
     }
 
-    public function completed($completed, $id)
+    public function completed($id)
     {
-        $stm = $this->pdo->prepare('UPDATE tasks SET completed = :completed WHERE id = :id');
-        $stm->bindParam(':completed', $completed);
+        $stm = $this->pdo->prepare('UPDATE tasks SET completed = 1 WHERE id = :id');
         $stm->bindParam(':id', $id);
         $stm->execute();
 

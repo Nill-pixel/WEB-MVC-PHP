@@ -109,9 +109,8 @@ class TaskController extends RenderViews
 
     public function completed()
     {
-        $completed = $_POST['completed'];
-        $id = $_POST['id'];
-        $this->task->completed($completed, $id);
+        $id = $_GET['id'];
+        $this->task->completed($id);
     }
 
     public function taskCompleted()
