@@ -63,6 +63,7 @@ require_once('layout/layout.php')
                             </div>
                         </div>
                     </a>
+
                 <?php endforeach; ?>
 
 

@@ -23,4 +23,6 @@ $routes = [
     '/completed' => 'TaskController@completed',
     '/taskCompleted' => 'TaskController@taskCompleted',
     '/search' => 'TaskController@search',
+    '/addList' => 'ListController@addList',
+    '/saveList' => 'ListController@create',
 ];

@@ -11,8 +11,8 @@ class ListDAO extends Database
 
     public function create($name)
     {
-        $stm = $this->pdo->prepare("INSERT INTO lists(id, name) VALUES(uuid(),?)");
-        $stm->execute([$name]);
+        $stm = $this->pdo->prepare("INSERT INTO lists(id, name, idUser) VALUES(uuid(),?,?)");
+        $stm->execute([$name, $this->userId]);
     }
 
     public function getList()

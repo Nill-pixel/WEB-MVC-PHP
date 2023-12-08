@@ -9,7 +9,7 @@ require_once('layout/layout.php')
             <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
                 <div class="text-center md:text-left md:order-2 md:flex md:justify-end md:items-center">
                     <p class="mr-5 inline-block text-sm font-semibold text-white">
-                        Tasks
+                        Lists
                     </p>
                     <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border-2 border-white font-medium text-white hover:bg-white hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 transition-all text-sm"
                         href="todo">
@@ -49,16 +49,16 @@ require_once('layout/layout.php')
                 <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
                     <div class="text-center">
                         <div class="mt-7 sm:mt-12 mx-auto max-w-xl relative">
-                            <form method="post" action="/app/addTask">
+                            <form method="post" action="/app/saveList">
                                 <div
                                     class="relative z-10 flex space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-900/[.2]">
                                     <div class="flex-[1_0_0%]">
                                         <label for="hs-search-article-1"
                                             class="block text-sm text-gray-700 font-medium dark:text-white"><span
-                                                class="sr-only">Add a task</span></label>
+                                                class="sr-only">Add a List</span></label>
                                         <input type="text" name="name" id="hs-search-article-1"
                                             class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400"
-                                            required placeholder="Add a task">
+                                            required placeholder="Add a List">
                                     </div>
                                     <div class="flex-[0_0_auto]">
                                         <button type="submit"

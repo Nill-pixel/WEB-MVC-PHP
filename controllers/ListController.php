@@ -1,5 +1,6 @@
 <?php
-class ListController
+session_start();
+class ListController extends RenderViews
 {
     private $list;
 
@@ -12,6 +13,10 @@ class ListController
     {
         $name = $_POST['name'];
         $this->list->create($name);
+    }
+    public function AddList()
+    {
+        $this->loadView('addList', ['lists' => $this->list->getList()]);
     }
 
     public function getList()

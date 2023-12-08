@@ -1,5 +1,5 @@
 <?php
-if (empty($_SESSION['user_id'])) {
+if (!$_SESSION['user_id']) {
     header('Location: /app');
 }
 ?>
