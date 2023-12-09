@@ -27,4 +27,14 @@ class ListController extends RenderViews
     {
         $this->list->getList();
     }
+    public function addTaskList()
+    {
+        $this->loadView('addTaskList', ['lists' => $this->list->getList()]);
+    }
+    public function addTaskListSave()
+    {
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $this->list->addTaskList($name, $id);
+    }
 }

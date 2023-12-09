@@ -13,11 +13,10 @@ class TaskDAO
     }
     public function create($name)
     {
-        $stm = $this->pdo->prepare("INSERT INTO tasks (id, name, data, idUser) VALUES (uuid(),?,NULL,?)");
+        $stm = $this->pdo->prepare("INSERT INTO tasks (name, data, idUser) VALUES (?,NULL,?)");
         $stm->execute([$name, $this->userId]);
 
         header('Location: /app/planned');
-        echo json_encode(["msg" => "Created"]);
     }
 
     public function all()

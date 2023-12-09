@@ -11,10 +11,9 @@ class ListDAO extends Database
 
     public function create($name)
     {
-        $stm = $this->pdo->prepare("INSERT INTO lists(id, name, idUser) VALUES(uuid(),?,?)");
+        $stm = $this->pdo->prepare("INSERT INTO lists(name, idUser) VALUES(?,?)");
         $stm->execute([$name, $this->userId]);
     }
-
     public function getList()
     {
         $stm = $this->pdo->query("SELECT * FROM lists WHERE idUser = $this->userId");
@@ -23,5 +22,12 @@ class ListDAO extends Database
         } else {
             return [];
         }
+    }
+    public function addTaskList($name, $id)
+    {
+        $stm = $this->pdo->prepare("INSERT INTO tasks (name, data, idUser, idList) VALUES (?,NOW(),?,?)");
+        $stm->execute([$name, $this->userId, $id]);
+
+        header('Location: /app/planned');
     }
 }
