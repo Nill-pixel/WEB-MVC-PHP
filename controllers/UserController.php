@@ -3,14 +3,13 @@ class UserController extends RenderViews
 {
     private $userDao;
     private $list;
+    private $session;
     public function __construct()
     {
         $this->userDao = new UserDAO();
         $this->list = new ListDAO();
-    }
-    public function index()
-    {
-
+        $this->session = new SessionManager();
+        $this->session->verify();
     }
 
     public function show($id)
@@ -73,10 +72,10 @@ class UserController extends RenderViews
         $this->userDao->delete($idUser);
 
     }
-
     public function logout()
     {
-        $this->userDao->logout();
+        $this->session->destroy();
+        header('Location: /app/signIn');
     }
 
     public function login()

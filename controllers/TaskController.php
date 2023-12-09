@@ -3,10 +3,13 @@ class TaskController extends RenderViews
 {
     private $task;
     private $list;
+    private $session;
     public function __construct()
     {
         $this->task = new TaskDAO();
         $this->list = new ListDAO();
+        $this->session = new SessionManager();
+        $this->session->verify();
     }
     public function create()
     {

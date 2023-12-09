@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-require_once('views\layout\session.php');
-?>
 
 <head>
     <meta charset="UTF-8">

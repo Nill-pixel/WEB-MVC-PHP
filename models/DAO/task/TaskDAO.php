@@ -4,6 +4,7 @@ class TaskDAO
 {
     private $pdo;
     private $userId;
+    private $session;
 
     public function __construct()
     {

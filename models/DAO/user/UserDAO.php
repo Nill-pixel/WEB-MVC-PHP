@@ -60,12 +60,6 @@ class UserDAO
         return $stm->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function logout()
-    {
-        session_destroy();
-        header("Location: /app");
-    }
-
     public function delete($id)
     {
         $stm = $this->pdo->prepare('DELETE FROM users WHERE id = ?');

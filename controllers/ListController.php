@@ -3,10 +3,14 @@ session_start();
 class ListController extends RenderViews
 {
     private $list;
+    private $session;
 
     public function __construct()
     {
         $this->list = new ListDAO();
+        $this->session = new SessionManager();
+        $this->session->verify();
+
     }
 
     public function create()
