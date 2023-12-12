@@ -45,7 +45,7 @@ require_once('layout/layoutFun.php');
         </div>
 
         <div class="max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <div class="grid sm:grid-cols-1 lg:grid-cols-1 gap-3 sm:gap-7">
+            <div class="flex justify-center sm:grid-cols-1 lg:grid-cols-1 gap-1 sm:gap-7">
                 <form method="post" action="/app/update"
                     class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800">
                     <div class="p-4 md:p-5">
@@ -61,17 +61,17 @@ require_once('layout/layoutFun.php');
                                     <div>
                                         <label for="first_name"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
-                                        <input type="text" id="first_name" name="name"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder=<?php echo $task['name'] ?>>
+                                        <input type="text" id="first_name" placeholder=<?php echo $task['name']; ?>
+                                            name="name"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                                     </div>
                                     <div class="inline-flex items-center">
                                         <div class="grid mt-2 sm:grid-cols-1 ">
                                             <label for="hs-checkbox-in-form"
                                                 class="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                                                <input type="checkbox"
+                                                <input type="checkbox" name="check" value="1"
                                                     class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                    id="hs-checkbox-in-form" <?php if ($task['completed']):
+                                                    id="hs-checkbox-in-form" <?php if ($task['important']):
                                                         echo "checked";
                                                     endif; ?> />
                                                 <span
@@ -131,3 +131,6 @@ require_once('layout/layoutFun.php');
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>

@@ -21,7 +21,6 @@ class TaskController extends RenderViews
     {
         $oldTask = $this->task->fetchById($this->task->task_id = $_POST['id']);
         $name = $_POST['name'];
-        $description = $_POST['description'];
         $task_date = $_POST['data'];
         $task_id = $_POST['id'];
         $task_check = $_POST['check'];
@@ -32,13 +31,10 @@ class TaskController extends RenderViews
             echo "Please enter a date in the future";
             return;
         }
-
         if (empty($name)) {
             $name = $oldTask['name'];
         }
-        if (empty($description)) {
-            $description = $oldTask['description'];
-        }
+
         if (empty($task_check)) {
             $task_check = 0;
         }
@@ -46,7 +42,7 @@ class TaskController extends RenderViews
             $task_date = $oldTask['data'];
         }
 
-        $updateTask = new TaskDTO($name, $description, $task_check, $task_id, $task_date);
+        $updateTask = new TaskDTO($name, $task_check, $task_id, $task_date);
         $this->task->update($updateTask);
     }
 

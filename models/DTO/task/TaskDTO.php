@@ -10,7 +10,6 @@ class TaskDTO
      * Summary of description
      * @var 
      */
-    public $description;
     /**
      * Summary of task_check
      * @var 
@@ -33,10 +32,9 @@ class TaskDTO
      */
     public $task_completed;
 
-    public function __construct($name, $description, $task_check, $task_id, $task_date)
+    public function __construct($name, $task_check, $task_id, $task_date)
     {
         $this->name = $name;
-        $this->description = $description;
         $this->task_check = $task_check;
         $this->task_id = $task_id;
         $this->task_date = $task_date;

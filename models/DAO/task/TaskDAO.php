@@ -68,9 +68,8 @@ class TaskDAO
 
     public function update(TaskDTO $task)
     {
-        $stm = $this->pdo->prepare("UPDATE tasks SET name = :name, data = :data, description = :description, important = :important WHERE id = :id ");
+        $stm = $this->pdo->prepare("UPDATE tasks SET name = :name, data = :data, important = :important, completed = NULL WHERE id = :id ");
         $stm->bindParam(':name', $task->name);
-        $stm->bindParam(':description', $task->description);
         $stm->bindParam(':id', $task->task_id);
         $stm->bindParam(':important', $task->task_check);
         $stm->bindParam(':data', $task->task_date);

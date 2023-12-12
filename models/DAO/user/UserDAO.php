@@ -44,10 +44,11 @@ class UserDAO
     public function update(UserDTO $user)
     {
         $userId = $_SESSION['user_id'];
+        $hashPassword = password_hash($user->password, PASSWORD_DEFAULT);
         $stm = $this->pdo->prepare('UPDATE users SET name = :name, password = :password, email = :email WHERE id = :id');
         $stm->bindParam(':name', $user->name);
         $stm->bindParam(':email', $user->email);
-        $stm->bindParam(':password', $user->password);
+        $stm->bindParam(':password', $hashPassword);
         $stm->bindParam(':id', $userId);
 
         $stm->execute();
