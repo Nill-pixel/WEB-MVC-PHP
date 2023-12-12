@@ -86,6 +86,7 @@ class TaskController extends RenderViews
 
     public function showImportant()
     {
+        echo '<script>swal("Good job!", "You clicked the button!", "success");</script>';
         $this->loadView('tasks', [
             'tasks' => $this->task->allImportant(),
             'lists' => $this->list->getList()
@@ -114,6 +115,7 @@ class TaskController extends RenderViews
 
     public function taskCompleted()
     {
+        echo '<script>swal("Good job!", "You clicked the button!", "success");</script>';
         $this->loadView('tasks', [
             'tasks' => $this->task->taskCompleted(),
             'lists' => $this->list->getList()

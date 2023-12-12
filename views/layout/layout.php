@@ -174,6 +174,7 @@
                         class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
                         <ul class="hs-accordion-group ps-3 pt-2" data-hs-accordion-always-open>
                             <?php foreach ($lists as $list): ?>
+
                                 <li class="hs-accordion m-2" id="users-accordion-sub-1">
                                     <button type="button"
                                         class="hs-accordion-toggle hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
@@ -198,9 +199,14 @@
                                         class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
                                         <ul class="pt-2 ps-2">
                                             <li>
-                                                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                                    href="#">
-                                                    Link 1
+                                                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300"
+                                                    href="list?id=<?php echo $list['id']; ?>">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                                    </svg>
+                                                    See List
                                                 </a>
                                             </li>
                                             <li>
@@ -217,6 +223,7 @@
                                         </ul>
                                     </div>
                                 </li>
+
                             <?php endforeach; ?>
                             <li><a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300"
                                     href="addList">

@@ -27,4 +27,5 @@ $routes = [
     '/saveList' => 'ListController@create',
     '/addTaskList' => 'ListController@addTaskList',
     '/addTaskListSave' => 'ListController@addTaskListSave',
+    '/list' => 'ListController@list',
 ];

@@ -90,7 +90,6 @@ class TaskDAO
         $stm = $this->pdo->prepare('UPDATE tasks SET completed = 1 WHERE id = :id');
         $stm->bindParam(':id', $id);
         $stm->execute();
-
         header('Location: /app/todo');
     }
 

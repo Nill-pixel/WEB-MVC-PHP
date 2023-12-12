@@ -28,6 +28,15 @@ class ListDAO extends Database
         $stm = $this->pdo->prepare("INSERT INTO tasks (name, data, idUser, idList) VALUES (?,NOW(),?,?)");
         $stm->execute([$name, $this->userId, $id]);
 
-        header('Location: /app/planned');
+        header('Location: /app/all');
+    }
+    public function getTaskByList($id)
+    {
+        $stm = $this->pdo->query("SELECT * FROM tasks WHERE idList = $id");
+        if ($stm->rowCount() > 0) {
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return [];
+        }
     }
 }
