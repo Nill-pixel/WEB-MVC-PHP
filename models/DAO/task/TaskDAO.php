@@ -15,8 +15,7 @@ class TaskDAO
     {
         $stm = $this->pdo->prepare("INSERT INTO tasks (name, data, idUser) VALUES (?,NULL,?)");
         $stm->execute([$name, $this->userId]);
-
-        header('Location: /app/planned');
+        echo "<script>alert('Success!');location.href='./all';</script>";
     }
 
     public function all()
@@ -75,7 +74,7 @@ class TaskDAO
         $stm->bindParam(':data', $task->task_date);
         $stm->execute();
 
-        header('Location: /app/tasks/' . $task->task_id);
+        echo "<script>alert('Success!');location.href='./tasks/$task->task_id';</script>";
     }
 
     public function delete($id)

@@ -13,7 +13,7 @@ class SessionManager
     public function verify()
     {
         if (!$this->isLoggedIn()) {
-            echo "<script>swal('Hello world!');</script>";
+            echo "<script>alert('Error Login!');location.href='./signIn';</script>";
         }
     }
 }

@@ -28,8 +28,7 @@ class TaskController extends RenderViews
         $dateTime = new DateTime($date);
 
         if ($dateTime->getTimestamp() < time()) {
-            echo "Please enter a date in the future";
-            return;
+            echo "<script>alert('Please enter a date in the future!');location.href='./tasks/$task_id';</script>";
         }
         if (empty($name)) {
             $name = $oldTask['name'];

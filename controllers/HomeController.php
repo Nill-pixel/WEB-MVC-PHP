@@ -2,9 +2,11 @@
 
 class HomeController extends RenderViews
 {
+    private $session;
     public function index()
     {
         $users = new UserDAO();
+        $this->session = new SessionManager();
 
         $this->loadView('home', [
             'title' => 'Home Page',
@@ -14,6 +16,7 @@ class HomeController extends RenderViews
 
     public function todo()
     {
+        $this->session->verify();
         $this->loadView('todo', [
             'title' => 'Todo List'
         ]);
