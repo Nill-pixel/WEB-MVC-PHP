@@ -13,6 +13,7 @@ class ListDAO extends Database
     {
         $stm = $this->pdo->prepare("INSERT INTO lists(name, idUser) VALUES(?,?)");
         $stm->execute([$name, $this->userId]);
+        echo "<script>alert('Success!');location.href='./all';</script>";
     }
     public function getList()
     {
